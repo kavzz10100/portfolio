@@ -148,176 +148,322 @@ function downloadResume() {
 
 // Enhanced PDF download function
 function downloadResumeAsPDF() {
-  // Load html2pdf library
-  const script = document.createElement('script');
-  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-  script.onload = function() {
-    generatePDF();
-  };
-  document.head.appendChild(script);
-  
-  function generatePDF() {
-    const resumeElement = document.querySelector('.resume-preview');
-    
-    // Clone the element to avoid modifying the original
-    const clonedElement = resumeElement.cloneNode(true);
-    
-    // Create a temporary container for styling
-    const tempContainer = document.createElement('div');
-    tempContainer.style.cssText = `
-      position: absolute;
-      left: -9999px;
-      top: -9999px;
-      width: 210mm;
-      font-family: 'Arial', sans-serif;
-      font-size: 12px;
-      line-height: 1.4;
-      color: #333;
+  // Create the complete resume content as text with proper formatting
+  const resumeContent = `
+KAVIYA M
+Full Stack Developer | AI/ML Enthusiast | Cloud Data Engineer
+
+Email: mkaviya1701@gmail.com | Phone: +91 6381780483
+GitHub: github.com/kavyaaa1701 | LinkedIn: linkedin.com/in/mkavya10100
+
+OBJECTIVE
+A passionate and skilled Full Stack Developer with expertise in AI/ML, cloud computing, and data engineering. Seeking to leverage my technical skills, academic achievements, and innovative mindset to contribute to cutting-edge technology projects while continuously learning and growing in the field.
+
+EDUCATION
+Master of Computer Applications (MCA) | 2023-2025
+College of Engineering, Anna University, Chennai
+Graduated: May 2025
+
+Bachelor of Computer Applications (BCA) | 2020-2023
+Gold Medalist - Highest Academic Performance
+Relevant Coursework: Data Structures, Algorithms, Database Management, Web Development
+
+TECHNICAL SKILLS
+Programming Languages: Python, Java, JavaScript, HTML5, CSS3, SQL
+Frameworks & Libraries: React.js, Flask, PyTorch, Tailwind CSS, Bootstrap, TensorFlow
+Cloud Technologies: AWS (S3, Glue, Athena, QuickSight), Docker
+Databases: MongoDB, MySQL, PostgreSQL
+Tools & Platforms: Git, GitHub, Android Studio, VS Code, Vercel, Linux, Jupyter Notebook
+Other Skills: Machine Learning, Data Analysis, RESTful APIs, Responsive Web Design
+
+PROJECTS
+Ex-Army Helpline Website
+- Developed a comprehensive support platform for ex-army personnel with modern responsive design and integrated contact forms
+- Technologies: React.js, Tailwind CSS, Web3 Forms, Vercel
+
+AI-Based Acne Detection & Network Security Analysis
+- Built an advanced AI system combining computer vision for acne detection with network security vulnerability analysis
+- Technologies: Flask, ResNet50, Attack Trees, Python, OpenCV
+
+Spotify-Inspired Data Engineering Pipeline
+- Designed and implemented a complete ETL pipeline for music data processing and analytics dashboard
+- Technologies: AWS S3, Glue, Athena, PySpark, QuickSight
+
+MCA Rank List Analysis Using Big Data
+- Performed comprehensive analysis of MCA admission rankings using big data processing techniques
+- Technologies: Apache Spark, Docker, Python, Data Visualization
+
+USAFE Emergency Response Mobile App
+- Developed Android emergency response application with real-time location tracking and emergency contact features
+- Technologies: Java, Android Studio, Google Maps API, Firebase
+
+CERTIFICATIONS
+• Python for Data Science - NPTEL (2023)
+• Flask Framework Development - EduYear (2023)
+• Certified Full-Stack Developer - Revamp Academy (2024)
+• Ethical Hacking Fundamentals - Cappriosec Securities (2023)
+• Data Engineering Basics - EduYear (2024)
+
+ACHIEVEMENTS & AWARDS
+• Academic Excellence: BCA Gold Medalist with highest GPA in the program
+• Chess Championships: 1st Place (2022), 2nd Place (2023) in inter-college tournaments
+• Creative Arts: 1st Prize winner in hairdressing and modeling competitions
+• Project Leadership: Led Project Nexus mentorship program for junior students
+• Language Learning: Active Duolingo user with 365+ day learning streak
+
+EXTRACURRICULAR ACTIVITIES
+• Active participant in competitive programming contests and hackathons
+• Photography enthusiast with focus on technical and creative composition
+• Regular contributor to open source projects on GitHub
+• Mentor for junior students in technical project development
+• Chess player with tournament experience and strategic thinking skills
+
+INTERESTS
+Artificial Intelligence, Machine Learning, Cloud Computing, Data Science, Web Development, Mobile App Development, Cybersecurity, Chess, Photography, Creative Arts, Language Learning, Open Source Contribution
+`;
+
+  // Create HTML content for PDF
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Kaviya M - Resume</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: Arial, sans-serif; 
+      line-height: 1.6; 
+      color: #333; 
+      max-width: 210mm; 
+      margin: 0 auto; 
+      padding: 15mm;
       background: white;
-      padding: 20mm;
-      box-sizing: border-box;
-    `;
-    
-    // Add PDF-specific styles to the cloned element
-    clonedElement.style.cssText = `
-      background: white;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      box-shadow: none;
-      border: none;
-      border-radius: 0;
-    `;
-    
-    // Style adjustments for PDF
-    const headerElement = clonedElement.querySelector('.resume-header');
-    if (headerElement) {
-      headerElement.style.cssText = `
-        text-align: center;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid #1e40af;
-      `;
-      
-      const titleElement = headerElement.querySelector('h3');
-      if (titleElement) {
-        titleElement.style.cssText = `
-          font-size: 24px;
-          color: #1e293b;
-          margin-bottom: 8px;
-          font-weight: 700;
-          letter-spacing: 1px;
-        `;
-      }
-      
-      const subtitleElement = headerElement.querySelector('.resume-title');
-      if (subtitleElement) {
-        subtitleElement.style.cssText = `
-          font-size: 14px;
-          color: #1e40af;
-          margin-bottom: 12px;
-          font-weight: 600;
-        `;
-      }
-      
-      const contactElement = headerElement.querySelector('.resume-contact');
-      if (contactElement) {
-        contactElement.style.cssText = `
-          font-size: 11px;
-          color: #666;
-          line-height: 1.5;
-        `;
-      }
+      font-size: 11px;
     }
+    h1 { 
+      font-size: 24px; 
+      text-align: center; 
+      margin-bottom: 5px; 
+      color: #1e293b;
+      font-weight: 700;
+    }
+    .subtitle { 
+      font-size: 14px; 
+      text-align: center; 
+      color: #1e40af; 
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .contact { 
+      text-align: center; 
+      margin-bottom: 20px; 
+      font-size: 10px; 
+      color: #666;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+    .section { 
+      margin-bottom: 15px; 
+      page-break-inside: avoid;
+    }
+    .section-title { 
+      font-size: 12px; 
+      font-weight: 700; 
+      color: #1e293b; 
+      border-bottom: 1px solid #ccc; 
+      padding-bottom: 2px; 
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .content { 
+      font-size: 11px; 
+      color: #555; 
+      line-height: 1.5;
+    }
+    .project { 
+      margin-bottom: 10px; 
+      padding-bottom: 5px;
+    }
+    .project-title { 
+      font-weight: 600; 
+      color: #1e293b; 
+      margin-bottom: 2px;
+    }
+    .project-desc { 
+      color: #666; 
+      margin-bottom: 2px;
+      font-size: 10px;
+    }
+    .tech { 
+      color: #1e40af; 
+      font-style: italic; 
+      font-size: 9px;
+    }
+    ul { 
+      margin-left: 15px; 
+      margin-bottom: 10px;
+    }
+    li { 
+      margin-bottom: 3px; 
+      font-size: 10px;
+    }
+    strong { 
+      color: #1e293b; 
+      font-weight: 600;
+    }
+    @page { 
+      margin: 15mm; 
+      size: A4;
+    }
+    @media print {
+      body { margin: 0; padding: 10mm; }
+      .section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <h1>KAVIYA M</h1>
+  <div class="subtitle">Full Stack Developer | AI/ML Enthusiast | Cloud Data Engineer</div>
+  <div class="contact">
+    Email: mkaviya1701@gmail.com | Phone: +91 6381780483<br>
+    GitHub: github.com/kavyaaa1701 | LinkedIn: linkedin.com/in/mkavya10100
+  </div>
+
+  <div class="section">
+    <div class="section-title">OBJECTIVE</div>
+    <div class="content">
+      A passionate and skilled Full Stack Developer with expertise in AI/ML, cloud computing, and data engineering. Seeking to leverage my technical skills, academic achievements, and innovative mindset to contribute to cutting-edge technology projects while continuously learning and growing in the field.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">EDUCATION</div>
+    <div class="content">
+      <strong>Master of Computer Applications (MCA)</strong> | 2023-2025<br>
+      College of Engineering, Anna University, Chennai<br>
+      Graduated: May 2025<br><br>
+      
+      <strong>Bachelor of Computer Applications (BCA)</strong> | 2020-2023<br>
+      Gold Medalist - Highest Academic Performance<br>
+      Relevant Coursework: Data Structures, Algorithms, Database Management, Web Development
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">TECHNICAL SKILLS</div>
+    <div class="content">
+      <strong>Programming Languages:</strong> Python, Java, JavaScript, HTML5, CSS3, SQL<br>
+      <strong>Frameworks & Libraries:</strong> React.js, Flask, PyTorch, Tailwind CSS, Bootstrap, TensorFlow<br>
+      <strong>Cloud Technologies:</strong> AWS (S3, Glue, Athena, QuickSight), Docker<br>
+      <strong>Databases:</strong> MongoDB, MySQL, PostgreSQL<br>
+      <strong>Tools & Platforms:</strong> Git, GitHub, Android Studio, VS Code, Vercel, Linux, Jupyter Notebook<br>
+      <strong>Other Skills:</strong> Machine Learning, Data Analysis, RESTful APIs, Responsive Web Design
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">PROJECTS</div>
+    <div class="content">
+      <div class="project">
+        <div class="project-title">Ex-Army Helpline Website</div>
+        <div class="project-desc">Developed a comprehensive support platform for ex-army personnel with modern responsive design and integrated contact forms</div>
+        <div class="tech">Technologies: React.js, Tailwind CSS, Web3 Forms, Vercel</div>
+      </div>
+
+      <div class="project">
+        <div class="project-title">AI-Based Acne Detection & Network Security Analysis</div>
+        <div class="project-desc">Built an advanced AI system combining computer vision for acne detection with network security vulnerability analysis</div>
+        <div class="tech">Technologies: Flask, ResNet50, Attack Trees, Python, OpenCV</div>
+      </div>
+
+      <div class="project">
+        <div class="project-title">Spotify-Inspired Data Engineering Pipeline</div>
+        <div class="project-desc">Designed and implemented a complete ETL pipeline for music data processing and analytics dashboard</div>
+        <div class="tech">Technologies: AWS S3, Glue, Athena, PySpark, QuickSight</div>
+      </div>
+
+      <div class="project">
+        <div class="project-title">MCA Rank List Analysis Using Big Data</div>
+        <div class="project-desc">Performed comprehensive analysis of MCA admission rankings using big data processing techniques</div>
+        <div class="tech">Technologies: Apache Spark, Docker, Python, Data Visualization</div>
+      </div>
+
+      <div class="project">
+        <div class="project-title">USAFE Emergency Response Mobile App</div>
+        <div class="project-desc">Developed Android emergency response application with real-time location tracking and emergency contact features</div>
+        <div class="tech">Technologies: Java, Android Studio, Google Maps API, Firebase</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">CERTIFICATIONS</div>
+    <div class="content">
+      <ul>
+        <li>Python for Data Science - NPTEL (2023)</li>
+        <li>Flask Framework Development - EduYear (2023)</li>
+        <li>Certified Full-Stack Developer - Revamp Academy (2024)</li>
+        <li>Ethical Hacking Fundamentals - Cappriosec Securities (2023)</li>
+        <li>Data Engineering Basics - EduYear (2024)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">ACHIEVEMENTS & AWARDS</div>
+    <div class="content">
+      <ul>
+        <li><strong>Academic Excellence:</strong> BCA Gold Medalist with highest GPA in the program</li>
+        <li><strong>Chess Championships:</strong> 1st Place (2022), 2nd Place (2023) in inter-college tournaments</li>
+        <li><strong>Creative Arts:</strong> 1st Prize winner in hairdressing and modeling competitions</li>
+        <li><strong>Project Leadership:</strong> Led Project Nexus mentorship program for junior students</li>
+        <li><strong>Language Learning:</strong> Active Duolingo user with 365+ day learning streak</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">EXTRACURRICULAR ACTIVITIES</div>
+    <div class="content">
+      <ul>
+        <li>Active participant in competitive programming contests and hackathons</li>
+        <li>Photography enthusiast with focus on technical and creative composition</li>
+        <li>Regular contributor to open source projects on GitHub</li>
+        <li>Mentor for junior students in technical project development</li>
+        <li>Chess player with tournament experience and strategic thinking skills</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">INTERESTS</div>
+    <div class="content">
+      Artificial Intelligence, Machine Learning, Cloud Computing, Data Science, Web Development, Mobile App Development, Cybersecurity, Chess, Photography, Creative Arts, Language Learning, Open Source Contribution
+    </div>
+  </div>
+</body>
+</html>
+`;
+
+  // Create a new window with the HTML content and trigger print
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(htmlContent);
+  printWindow.document.close();
+  
+  // Wait for content to load, then trigger print which will show save as PDF option
+  setTimeout(() => {
+    printWindow.focus();
+    printWindow.print();
     
-    // Style section headers
-    const sectionHeaders = clonedElement.querySelectorAll('.resume-section h4');
-    sectionHeaders.forEach(header => {
-      header.style.cssText = `
-        font-size: 14px;
-        color: #1e293b;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 4px;
-        margin: 15px 0 8px 0;
-        font-weight: 700;
-        text-transform: uppercase;
-        page-break-after: avoid;
-      `;
-    });
+    // Show success notification
+    showNotification('Resume PDF download dialog opened! Choose "Save as PDF" in the print dialog.', 'success');
     
-    // Style section content
-    const sectionItems = clonedElement.querySelectorAll('.resume-item');
-    sectionItems.forEach(item => {
-      item.style.cssText = `
-        font-size: 11px;
-        color: #555;
-        line-height: 1.4;
-        margin-bottom: 10px;
-        page-break-inside: avoid;
-      `;
-    });
-    
-    // Style strong elements
-    const strongElements = clonedElement.querySelectorAll('strong');
-    strongElements.forEach(strong => {
-      strong.style.color = '#1e293b';
-      strong.style.fontWeight = '600';
-    });
-    
-    // Style project items
-    const projectItems = clonedElement.querySelectorAll('.project-item');
-    projectItems.forEach(item => {
-      item.style.cssText = `
-        margin-bottom: 12px;
-        padding-bottom: 8px;
-        border-bottom: 1px dotted #ddd;
-        page-break-inside: avoid;
-      `;
-    });
-    
-    // Style tech used elements
-    const techUsedElements = clonedElement.querySelectorAll('.tech-used');
-    techUsedElements.forEach(tech => {
-      tech.style.cssText = `
-        color: #1e40af;
-        font-size: 10px;
-        font-style: italic;
-      `;
-    });
-    
-    tempContainer.appendChild(clonedElement);
-    document.body.appendChild(tempContainer);
-    
-    // PDF options
-    const options = {
-      margin: [10, 10, 10, 10],
-      filename: 'Kaviya_M_Resume.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { 
-        scale: 2,
-        useCORS: true,
-        letterRendering: true,
-        allowTaint: false
-      },
-      jsPDF: { 
-        unit: 'mm', 
-        format: 'a4', 
-        orientation: 'portrait',
-        compressPDF: true
-      },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-    };
-    
-    // Generate PDF
-    html2pdf().set(options).from(clonedElement).save().then(() => {
-      document.body.removeChild(tempContainer);
-      showNotification('Resume PDF downloaded successfully!', 'success');
-    }).catch((error) => {
-      console.error('PDF generation failed:', error);
-      document.body.removeChild(tempContainer);
-      showNotification('PDF generation failed. Please try again.', 'error');
-    });
-  }
+    // Close the window after a delay
+    setTimeout(() => {
+      printWindow.close();
+    }, 1000);
+  }, 500);
 }
 
 // Print resume function
