@@ -176,14 +176,14 @@ async function downloadResumeAsPDF() {
     // Set font and colors
     doc.setFont('helvetica');
     
-    let yPosition = 20;
+    let yPosition = 15;
     const leftMargin = 20;
     const rightMargin = 190;
-    const lineHeight = 6;
+    const lineHeight = 5.5;
     
     // Helper function to add text with line breaks
     function addText(text, x, y, options = {}) {
-      const fontSize = options.fontSize || 11;
+      const fontSize = options.fontSize || 10;
       const maxWidth = options.maxWidth || (rightMargin - x);
       const isBold = options.bold || false;
       
@@ -203,133 +203,141 @@ async function downloadResumeAsPDF() {
     }
     
     // Header
-    doc.setFontSize(20);
+    doc.setFontSize(18);
     doc.setFont('helvetica', 'bold');
     doc.text('KAVIYA M', 105, yPosition, { align: 'center' });
-    yPosition += 8;
+    yPosition += 7;
     
-    doc.setFontSize(12);
+    doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
     doc.text('Full Stack Developer | AI/ML Enthusiast | Cloud Data Engineer', 105, yPosition, { align: 'center' });
-    yPosition += 10;
+    yPosition += 8;
     
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.text('Email: mkaviya1701@gmail.com | Phone: +91 6381780483', 105, yPosition, { align: 'center' });
-    yPosition += 5;
+    yPosition += 4;
     doc.text('GitHub: github.com/kavyaaa1701 | LinkedIn: linkedin.com/in/mkavya10100', 105, yPosition, { align: 'center' });
-    yPosition += 15;
+    yPosition += 10;
     
     // Add line
     doc.setLineWidth(0.5);
     doc.line(leftMargin, yPosition, rightMargin, yPosition);
-    yPosition += 10;
+    yPosition += 7;
     
     // Objective
-    yPosition = addText('OBJECTIVE', leftMargin, yPosition, { fontSize: 12, bold: true });
-    yPosition += 3;
-    yPosition = addText('A passionate and skilled Full Stack Developer with expertise in AI/ML, cloud computing, and data engineering. Seeking to leverage my technical skills, academic achievements, and innovative mindset to contribute to cutting-edge technology projects while continuously learning and growing in the field.', leftMargin, yPosition);
-    yPosition += 8;
+    yPosition = addText('OBJECTIVE', leftMargin, yPosition, { fontSize: 11, bold: true });
+    yPosition += 2;
+    yPosition = addText('A passionate and skilled Full Stack Developer with expertise in AI/ML, cloud computing, and data engineering. Seeking to leverage my technical skills, academic achievements, and innovative mindset to contribute to cutting-edge technology projects while continuously learning and growing in the field.', leftMargin, yPosition, { fontSize: 9 });
+    yPosition += 6;
     
     // Education
-    yPosition = addText('EDUCATION', leftMargin, yPosition, { fontSize: 12, bold: true });
-    yPosition += 3;
-    yPosition = addText('Master of Computer Applications (MCA) | 2023-2025', leftMargin, yPosition, { bold: true });
-    yPosition = addText('College of Engineering, Anna University, Chennai', leftMargin, yPosition);
-    yPosition = addText('Graduated: May 2025', leftMargin, yPosition);
-    yPosition += 3;
-    yPosition = addText('Bachelor of Computer Applications (BCA) | 2020-2023', leftMargin, yPosition, { bold: true });
-    yPosition = addText('Gold Medalist - Highest Academic Performance', leftMargin, yPosition);
-    yPosition += 8;
+    yPosition = addText('EDUCATION', leftMargin, yPosition, { fontSize: 11, bold: true });
+    yPosition += 2;
+    yPosition = addText('Master of Computer Applications (MCA) | 2023-2025', leftMargin, yPosition, { bold: true, fontSize: 9 });
+    yPosition = addText('College of Engineering, Anna University, Chennai - Graduated: May 2025', leftMargin, yPosition, { fontSize: 9 });
+    yPosition += 2;
+    yPosition = addText('Bachelor of Computer Applications (BCA) | 2020-2023', leftMargin, yPosition, { bold: true, fontSize: 9 });
+    yPosition = addText('Gold Medalist - Highest Academic Performance', leftMargin, yPosition, { fontSize: 9 });
+    yPosition += 6;
     
     // Technical Skills
-    yPosition = addText('TECHNICAL SKILLS', leftMargin, yPosition, { fontSize: 12, bold: true });
-    yPosition += 3;
-    yPosition = addText('Programming Languages: Python, Java, JavaScript, HTML5, CSS3, SQL', leftMargin, yPosition);
-    yPosition = addText('Frameworks & Libraries: React.js, Flask, PyTorch, Tailwind CSS, Bootstrap, TensorFlow', leftMargin, yPosition);
-    yPosition = addText('Cloud Technologies: AWS (S3, Glue, Athena, QuickSight), Docker', leftMargin, yPosition);
-    yPosition = addText('Databases: MongoDB, MySQL, PostgreSQL', leftMargin, yPosition);
-    yPosition = addText('Tools & Platforms: Git, GitHub, Android Studio, VS Code, Vercel, Linux', leftMargin, yPosition);
-    yPosition += 8;
+    yPosition = addText('TECHNICAL SKILLS', leftMargin, yPosition, { fontSize: 11, bold: true });
+    yPosition += 2;
+    yPosition = addText('Programming: Python, Java, JavaScript, HTML5, CSS3, SQL', leftMargin, yPosition, { fontSize: 9 });
+    yPosition = addText('Frameworks: React.js, Flask, PyTorch, Tailwind CSS, Bootstrap, TensorFlow', leftMargin, yPosition, { fontSize: 9 });
+    yPosition = addText('Cloud & Databases: AWS (S3, Glue, Athena, QuickSight), Docker, MongoDB, MySQL', leftMargin, yPosition, { fontSize: 9 });
+    yPosition = addText('Tools: Git, GitHub, Android Studio, VS Code, Vercel, Linux, Jupyter Notebook', leftMargin, yPosition, { fontSize: 9 });
+    yPosition += 6;
     
-    // Check if we need a new page
-    if (yPosition > 250) {
-      doc.addPage();
-      yPosition = 20;
-    }
-    
-    // Projects
-    yPosition = addText('PROJECTS', leftMargin, yPosition, { fontSize: 12, bold: true });
-    yPosition += 3;
+    // Projects (more concise)
+    yPosition = addText('KEY PROJECTS', leftMargin, yPosition, { fontSize: 11, bold: true });
+    yPosition += 2;
     
     const projects = [
       {
         title: 'Ex-Army Helpline Website',
-        desc: 'Developed a comprehensive support platform for ex-army personnel with modern responsive design and integrated contact forms',
-        tech: 'Technologies: React.js, Tailwind CSS, Web3 Forms, Vercel'
+        desc: 'Comprehensive support platform with modern responsive design and integrated contact forms.',
+        tech: 'React.js, Tailwind CSS, Web3 Forms, Vercel'
       },
       {
-        title: 'AI-Based Acne Detection & Network Security Analysis',
-        desc: 'Built an advanced AI system combining computer vision for acne detection with network security vulnerability analysis',
-        tech: 'Technologies: Flask, ResNet50, Attack Trees, Python, OpenCV'
+        title: 'AI-Based Acne Detection & Network Security',
+        desc: 'Advanced AI system combining computer vision for acne detection with network security analysis.',
+        tech: 'Flask, ResNet50, Attack Trees, Python, OpenCV'
       },
       {
         title: 'Spotify-Inspired Data Engineering Pipeline',
-        desc: 'Designed and implemented a complete ETL pipeline for music data processing and analytics dashboard',
-        tech: 'Technologies: AWS S3, Glue, Athena, PySpark, QuickSight'
+        desc: 'Complete ETL pipeline for music data processing and analytics dashboard.',
+        tech: 'AWS S3, Glue, Athena, PySpark, QuickSight'
+      },
+      {
+        title: 'MCA Rank List Analysis & USAFE Emergency App',
+        desc: 'Big data analysis using Apache Spark & Android emergency response application.',
+        tech: 'Apache Spark, Docker, Java, Android Studio, Google Maps API'
       }
     ];
     
     projects.forEach(project => {
-      if (yPosition > 250) {
+      // Check if we need a new page - allow more content on first page
+      if (yPosition > 260) {
         doc.addPage();
         yPosition = 20;
       }
-      yPosition = addText(project.title, leftMargin, yPosition, { bold: true });
-      yPosition = addText(project.desc, leftMargin, yPosition, { fontSize: 10 });
-      yPosition = addText(project.tech, leftMargin, yPosition, { fontSize: 9 });
+      yPosition = addText(project.title, leftMargin, yPosition, { bold: true, fontSize: 9 });
+      yPosition = addText(project.desc, leftMargin, yPosition, { fontSize: 8 });
+      yPosition = addText(`Tech: ${project.tech}`, leftMargin, yPosition, { fontSize: 8 });
       yPosition += 3;
     });
     
-    // Add new page for remaining sections
-    doc.addPage();
-    yPosition = 20;
+    // Only add new page if we haven't already for projects
+    if (yPosition <= 260) {
+      doc.addPage();
+      yPosition = 20;
+    }
     
     // Certifications
-    yPosition = addText('CERTIFICATIONS', leftMargin, yPosition, { fontSize: 12, bold: true });
-    yPosition += 3;
+    yPosition = addText('CERTIFICATIONS', leftMargin, yPosition, { fontSize: 11, bold: true });
+    yPosition += 2;
     const certifications = [
-      '• Python for Data Science - NPTEL (2023)',
-      '• Flask Framework Development - EduYear (2023)',
-      '• Certified Full-Stack Developer - Revamp Academy (2024)',
-      '• Ethical Hacking Fundamentals - Cappriosec Securities (2023)',
-      '• Data Engineering Basics - EduYear (2024)'
+      'Python for Data Science - NPTEL (2023)',
+      'Flask Framework Development - EduYear (2023)', 
+      'Certified Full-Stack Developer - Revamp Academy (2024)',
+      'Ethical Hacking Fundamentals - Cappriosec Securities (2023)',
+      'Data Engineering Basics - EduYear (2024)'
     ];
     
     certifications.forEach(cert => {
-      yPosition = addText(cert, leftMargin, yPosition);
+      yPosition = addText(`• ${cert}`, leftMargin, yPosition, { fontSize: 9 });
     });
-    yPosition += 8;
+    yPosition += 6;
     
     // Achievements
-    yPosition = addText('ACHIEVEMENTS & AWARDS', leftMargin, yPosition, { fontSize: 12, bold: true });
-    yPosition += 3;
+    yPosition = addText('ACHIEVEMENTS & AWARDS', leftMargin, yPosition, { fontSize: 11, bold: true });
+    yPosition += 2;
     const achievements = [
-      '• Academic Excellence: BCA Gold Medalist with highest GPA',
-      '• Chess Championships: 1st Place (2022), 2nd Place (2023)',
-      '• Creative Arts: 1st Prize winner in hairdressing and modeling',
-      '• Project Leadership: Led Project Nexus mentorship program',
-      '• Language Learning: Active Duolingo user with 365+ day streak'
+      'Academic Excellence: BCA Gold Medalist with highest GPA',
+      'Chess Championships: 1st Place (2022), 2nd Place (2023) in tournaments',
+      'Creative Arts: 1st Prize winner in hairdressing and modeling competitions',
+      'Project Leadership: Led Project Nexus mentorship program for junior students',
+      'Language Learning: Active Duolingo user with 365+ day learning streak'
     ];
     
     achievements.forEach(achievement => {
-      yPosition = addText(achievement, leftMargin, yPosition);
+      yPosition = addText(`• ${achievement}`, leftMargin, yPosition, { fontSize: 9 });
     });
-    yPosition += 8;
+    yPosition += 6;
     
-    // Interests
-    yPosition = addText('INTERESTS', leftMargin, yPosition, { fontSize: 12, bold: true });
-    yPosition += 3;
-    yPosition = addText('Artificial Intelligence, Machine Learning, Cloud Computing, Data Science, Web Development, Mobile App Development, Cybersecurity, Chess, Photography, Creative Arts, Language Learning, Open Source Contribution', leftMargin, yPosition);
+    // Extracurricular Activities
+    yPosition = addText('EXTRACURRICULAR ACTIVITIES', leftMargin, yPosition, { fontSize: 11, bold: true });
+    yPosition += 2;
+    yPosition = addText('• Active participant in competitive programming contests and hackathons', leftMargin, yPosition, { fontSize: 9 });
+    yPosition = addText('• Photography enthusiast and regular contributor to open source projects', leftMargin, yPosition, { fontSize: 9 });
+    yPosition = addText('• Mentor for junior students in technical project development', leftMargin, yPosition, { fontSize: 9 });
+    yPosition += 6;
+    
+    // Interests (more compact)
+    yPosition = addText('INTERESTS', leftMargin, yPosition, { fontSize: 11, bold: true });
+    yPosition += 2;
+    yPosition = addText('Artificial Intelligence, Machine Learning, Cloud Computing, Data Science, Web Development, Mobile App Development, Cybersecurity, Chess, Photography, Creative Arts, Language Learning, Open Source Contribution', leftMargin, yPosition, { fontSize: 9 });
     
     // Save the PDF
     doc.save('Kaviya_M_Resume.pdf');
