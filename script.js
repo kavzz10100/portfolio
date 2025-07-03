@@ -148,95 +148,95 @@ function downloadResume() {
 
 // Enhanced PDF download function
 function downloadResumeAsPDF() {
-  const resumeContent = `
-KAVIYA M
-Full Stack Developer | AI/ML Enthusiast | Cloud Data Engineer
-
-📧 mkaviya1701@gmail.com | 📱 +91 6381780483
-🔗 github.com/kavyaaa1701 | 💼 linkedin.com/in/mkavya10100
-
-OBJECTIVE
-A passionate and skilled Full Stack Developer with expertise in AI/ML, cloud computing, and data engineering. Seeking to leverage my technical skills, academic achievements, and innovative mindset to contribute to cutting-edge technology projects while continuously learning and growing in the field.
-
-EDUCATION
-Master of Computer Applications (MCA) | 2023-2025
-College of Engineering, Anna University, Chennai
-Graduated: May 2025
-
-Bachelor of Computer Applications (BCA) | 2020-2023
-Gold Medalist - Highest Academic Performance
-Relevant Coursework: Data Structures, Algorithms, Database Management, Web Development
-
-TECHNICAL SKILLS
-Programming Languages: Python, Java, JavaScript, HTML5, CSS3, SQL
-Frameworks & Libraries: React.js, Flask, PyTorch, Tailwind CSS, Bootstrap, TensorFlow
-Cloud Technologies: AWS (S3, Glue, Athena, QuickSight), Docker
-Databases: MongoDB, MySQL, PostgreSQL
-Tools & Platforms: Git, GitHub, Android Studio, VS Code, Vercel, Linux, Jupyter Notebook
-Other Skills: Machine Learning, Data Analysis, RESTful APIs, Responsive Web Design
-
-PROJECTS
-Ex-Army Helpline Website
-Developed a comprehensive support platform for ex-army personnel with modern responsive design and integrated contact forms
-Technologies: React.js, Tailwind CSS, Web3 Forms, Vercel
-
-AI-Based Acne Detection & Network Security Analysis
-Built an advanced AI system combining computer vision for acne detection with network security vulnerability analysis
-Technologies: Flask, ResNet50, Attack Trees, Python, OpenCV
-
-Spotify-Inspired Data Engineering Pipeline
-Designed and implemented a complete ETL pipeline for music data processing and analytics dashboard
-Technologies: AWS S3, Glue, Athena, QuickSight
-
-MCA Rank List Analysis Using Big Data
-Performed comprehensive analysis of MCA admission rankings using big data processing techniques
-Technologies: Apache Spark, Docker, Python, Data Visualization
-
-USAFE Emergency Response Mobile App
-Developed Android emergency response application with real-time location tracking and emergency contact features
-Technologies: Java, Android Studio, Google Maps API, Firebase
-
-CERTIFICATIONS
-• Python for Data Science - NPTEL (2023)
-• Flask Framework Development - EduYear (2023)
-• Certified Full-Stack Developer - Revamp Academy (2024)
-• Ethical Hacking Fundamentals - Cappriosec Securities (2023)
-• Data Engineering Basics - EduYear (2024)
-
-ACHIEVEMENTS & AWARDS
-• Academic Excellence: BCA Gold Medalist with highest GPA in the program
-• Chess Championships: 1st Place (2022), 2nd Place (2023) in inter-college tournaments
-• Creative Arts: 1st Prize winner in hairdressing and modeling competitions
-• Project Leadership: Led Project Nexus mentorship program for junior students
-• Language Learning: Active Duolingo user with 365+ day learning streak
-
-EXTRACURRICULAR ACTIVITIES
-• Active participant in competitive programming contests and hackathons
-• Photography enthusiast with focus on technical and creative composition
-• Regular contributor to open source projects on GitHub
-• Mentor for junior students in technical project development
-• Chess player with tournament experience and strategic thinking skills
-
-INTERESTS
-Artificial Intelligence, Machine Learning, Cloud Computing, Data Science, Web Development, Mobile App Development, Cybersecurity, Chess, Photography, Creative Arts, Language Learning, Open Source Contribution
-  `;
-
-  // Create a downloadable text file
-  const blob = new Blob([resumeContent], { type: 'text/plain' });
-  const url = window.URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'Kaviya_M_Resume.txt';
+  // Create a dynamic script element to load jsPDF
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+  script.onload = function() {
+    generatePDF();
+  };
+  document.head.appendChild(script);
   
-  // Append to body, click, and remove
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  
-  // Clean up the object URL
-  window.URL.revokeObjectURL(url);
-  
-  showNotification('Resume downloaded successfully!', 'success');
+  function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Set font and colors
+    doc.setFont('helvetica');
+    
+    let yPosition = 20;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 20;
+    const maxWidth = pageWidth - 2 * margin;
+    
+    // Header
+    doc.setFontSize(20);
+    doc.setTextColor(44, 62, 80);
+    doc.text('KAVIYA M', pageWidth / 2, yPosition, { align: 'center' });
+    yPosition += 8;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(30, 64, 175);
+    doc.text('Full Stack Developer | AI/ML Enthusiast | Cloud Data Engineer', pageWidth / 2, yPosition, { align: 'center' });
+    yPosition += 15;
+    
+    // Contact Info
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text('📧 mkaviya1701@gmail.com | 📱 +91 6381780483', pageWidth / 2, yPosition, { align: 'center' });
+    yPosition += 5;
+    doc.text('🔗 github.com/kavyaaa1701 | 💼 linkedin.com/in/mkavya10100', pageWidth / 2, yPosition, { align: 'center' });
+    yPosition += 15;
+    
+    // Helper function for sections
+    function addSection(title, content) {
+      doc.setFontSize(12);
+      doc.setTextColor(30, 41, 59);
+      doc.text(title, margin, yPosition);
+      yPosition += 2;
+      
+      // Underline
+      doc.setLineWidth(0.5);
+      doc.setDrawColor(200, 200, 200);
+      doc.line(margin, yPosition, pageWidth - margin, yPosition);
+      yPosition += 8;
+      
+      doc.setFontSize(9);
+      doc.setTextColor(85, 85, 85);
+      
+      const lines = doc.splitTextToSize(content, maxWidth);
+      lines.forEach(line => {
+        if (yPosition > 270) {
+          doc.addPage();
+          yPosition = 20;
+        }
+        doc.text(line, margin, yPosition);
+        yPosition += 4;
+      });
+      yPosition += 5;
+    }
+    
+    // Objective
+    addSection('OBJECTIVE', 'A passionate and skilled Full Stack Developer with expertise in AI/ML, cloud computing, and data engineering. Seeking to leverage my technical skills, academic achievements, and innovative mindset to contribute to cutting-edge technology projects while continuously learning and growing in the field.');
+    
+    // Education
+    addSection('EDUCATION', 'Master of Computer Applications (MCA) | 2023-2025\nCollege of Engineering, Anna University, Chennai - Graduated: May 2025\n\nBachelor of Computer Applications (BCA) | 2020-2023\nGold Medalist - Highest Academic Performance\nRelevant Coursework: Data Structures, Algorithms, Database Management, Web Development');
+    
+    // Technical Skills
+    addSection('TECHNICAL SKILLS', 'Programming Languages: Python, Java, JavaScript, HTML5, CSS3, SQL\nFrameworks & Libraries: React.js, Flask, PyTorch, Tailwind CSS, Bootstrap, TensorFlow\nCloud Technologies: AWS (S3, Glue, Athena, QuickSight), Docker\nDatabases: MongoDB, MySQL, PostgreSQL\nTools & Platforms: Git, GitHub, Android Studio, VS Code, Vercel, Linux, Jupyter Notebook\nOther Skills: Machine Learning, Data Analysis, RESTful APIs, Responsive Web Design');
+    
+    // Projects
+    addSection('PROJECTS', 'Ex-Army Helpline Website\nDeveloped a comprehensive support platform for ex-army personnel with modern responsive design and integrated contact forms\nTechnologies: React.js, Tailwind CSS, Web3 Forms, Vercel\n\nAI-Based Acne Detection & Network Security Analysis\nBuilt an advanced AI system combining computer vision for acne detection with network security vulnerability analysis\nTechnologies: Flask, ResNet50, Attack Trees, Python, OpenCV\n\nSpotify-Inspired Data Engineering Pipeline\nDesigned and implemented a complete ETL pipeline for music data processing and analytics dashboard\nTechnologies: AWS S3, Glue, Athena, QuickSight\n\nMCA Rank List Analysis Using Big Data\nPerformed comprehensive analysis of MCA admission rankings using big data processing techniques\nTechnologies: Apache Spark, Docker, Python, Data Visualization\n\nUSAFE Emergency Response Mobile App\nDeveloped Android emergency response application with real-time location tracking and emergency contact features\nTechnologies: Java, Android Studio, Google Maps API, Firebase');
+    
+    // Certifications
+    addSection('CERTIFICATIONS', '• Python for Data Science - NPTEL (2023)\n• Flask Framework Development - EduYear (2023)\n• Certified Full-Stack Developer - Revamp Academy (2024)\n• Ethical Hacking Fundamentals - Cappriosec Securities (2023)\n• Data Engineering Basics - EduYear (2024)');
+    
+    // Achievements
+    addSection('ACHIEVEMENTS & AWARDS', '• Academic Excellence: BCA Gold Medalist with highest GPA in the program\n• Chess Championships: 1st Place (2022), 2nd Place (2023) in inter-college tournaments\n• Creative Arts: 1st Prize winner in hairdressing and modeling competitions\n• Project Leadership: Led Project Nexus mentorship program for junior students\n• Language Learning: Active Duolingo user with 365+ day learning streak');
+    
+    // Save PDF
+    doc.save('Kaviya_M_Resume.pdf');
+    showNotification('Resume PDF downloaded successfully!', 'success');
+  }
 }
 
 // Print resume function
