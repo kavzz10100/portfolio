@@ -148,94 +148,175 @@ function downloadResume() {
 
 // Enhanced PDF download function
 function downloadResumeAsPDF() {
-  // Create a dynamic script element to load jsPDF
+  // Load html2pdf library
   const script = document.createElement('script');
-  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
   script.onload = function() {
     generatePDF();
   };
   document.head.appendChild(script);
   
   function generatePDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    const resumeElement = document.querySelector('.resume-preview');
     
-    // Set font and colors
-    doc.setFont('helvetica');
+    // Clone the element to avoid modifying the original
+    const clonedElement = resumeElement.cloneNode(true);
     
-    let yPosition = 20;
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const margin = 20;
-    const maxWidth = pageWidth - 2 * margin;
+    // Create a temporary container for styling
+    const tempContainer = document.createElement('div');
+    tempContainer.style.cssText = `
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      width: 210mm;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #333;
+      background: white;
+      padding: 20mm;
+      box-sizing: border-box;
+    `;
     
-    // Header
-    doc.setFontSize(20);
-    doc.setTextColor(44, 62, 80);
-    doc.text('KAVIYA M', pageWidth / 2, yPosition, { align: 'center' });
-    yPosition += 8;
+    // Add PDF-specific styles to the cloned element
+    clonedElement.style.cssText = `
+      background: white;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+    `;
     
-    doc.setFontSize(12);
-    doc.setTextColor(30, 64, 175);
-    doc.text('Full Stack Developer | AI/ML Enthusiast | Cloud Data Engineer', pageWidth / 2, yPosition, { align: 'center' });
-    yPosition += 15;
-    
-    // Contact Info
-    doc.setFontSize(10);
-    doc.setTextColor(100, 100, 100);
-    doc.text('📧 mkaviya1701@gmail.com | 📱 +91 6381780483', pageWidth / 2, yPosition, { align: 'center' });
-    yPosition += 5;
-    doc.text('🔗 github.com/kavyaaa1701 | 💼 linkedin.com/in/mkavya10100', pageWidth / 2, yPosition, { align: 'center' });
-    yPosition += 15;
-    
-    // Helper function for sections
-    function addSection(title, content) {
-      doc.setFontSize(12);
-      doc.setTextColor(30, 41, 59);
-      doc.text(title, margin, yPosition);
-      yPosition += 2;
+    // Style adjustments for PDF
+    const headerElement = clonedElement.querySelector('.resume-header');
+    if (headerElement) {
+      headerElement.style.cssText = `
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #1e40af;
+      `;
       
-      // Underline
-      doc.setLineWidth(0.5);
-      doc.setDrawColor(200, 200, 200);
-      doc.line(margin, yPosition, pageWidth - margin, yPosition);
-      yPosition += 8;
+      const titleElement = headerElement.querySelector('h3');
+      if (titleElement) {
+        titleElement.style.cssText = `
+          font-size: 24px;
+          color: #1e293b;
+          margin-bottom: 8px;
+          font-weight: 700;
+          letter-spacing: 1px;
+        `;
+      }
       
-      doc.setFontSize(9);
-      doc.setTextColor(85, 85, 85);
+      const subtitleElement = headerElement.querySelector('.resume-title');
+      if (subtitleElement) {
+        subtitleElement.style.cssText = `
+          font-size: 14px;
+          color: #1e40af;
+          margin-bottom: 12px;
+          font-weight: 600;
+        `;
+      }
       
-      const lines = doc.splitTextToSize(content, maxWidth);
-      lines.forEach(line => {
-        if (yPosition > 270) {
-          doc.addPage();
-          yPosition = 20;
-        }
-        doc.text(line, margin, yPosition);
-        yPosition += 4;
-      });
-      yPosition += 5;
+      const contactElement = headerElement.querySelector('.resume-contact');
+      if (contactElement) {
+        contactElement.style.cssText = `
+          font-size: 11px;
+          color: #666;
+          line-height: 1.5;
+        `;
+      }
     }
     
-    // Objective
-    addSection('OBJECTIVE', 'A passionate and skilled Full Stack Developer with expertise in AI/ML, cloud computing, and data engineering. Seeking to leverage my technical skills, academic achievements, and innovative mindset to contribute to cutting-edge technology projects while continuously learning and growing in the field.');
+    // Style section headers
+    const sectionHeaders = clonedElement.querySelectorAll('.resume-section h4');
+    sectionHeaders.forEach(header => {
+      header.style.cssText = `
+        font-size: 14px;
+        color: #1e293b;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 4px;
+        margin: 15px 0 8px 0;
+        font-weight: 700;
+        text-transform: uppercase;
+        page-break-after: avoid;
+      `;
+    });
     
-    // Education
-    addSection('EDUCATION', 'Master of Computer Applications (MCA) | 2023-2025\nCollege of Engineering, Anna University, Chennai - Graduated: May 2025\n\nBachelor of Computer Applications (BCA) | 2020-2023\nGold Medalist - Highest Academic Performance\nRelevant Coursework: Data Structures, Algorithms, Database Management, Web Development');
+    // Style section content
+    const sectionItems = clonedElement.querySelectorAll('.resume-item');
+    sectionItems.forEach(item => {
+      item.style.cssText = `
+        font-size: 11px;
+        color: #555;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        page-break-inside: avoid;
+      `;
+    });
     
-    // Technical Skills
-    addSection('TECHNICAL SKILLS', 'Programming Languages: Python, Java, JavaScript, HTML5, CSS3, SQL\nFrameworks & Libraries: React.js, Flask, PyTorch, Tailwind CSS, Bootstrap, TensorFlow\nCloud Technologies: AWS (S3, Glue, Athena, QuickSight), Docker\nDatabases: MongoDB, MySQL, PostgreSQL\nTools & Platforms: Git, GitHub, Android Studio, VS Code, Vercel, Linux, Jupyter Notebook\nOther Skills: Machine Learning, Data Analysis, RESTful APIs, Responsive Web Design');
+    // Style strong elements
+    const strongElements = clonedElement.querySelectorAll('strong');
+    strongElements.forEach(strong => {
+      strong.style.color = '#1e293b';
+      strong.style.fontWeight = '600';
+    });
     
-    // Projects
-    addSection('PROJECTS', 'Ex-Army Helpline Website\nDeveloped a comprehensive support platform for ex-army personnel with modern responsive design and integrated contact forms\nTechnologies: React.js, Tailwind CSS, Web3 Forms, Vercel\n\nAI-Based Acne Detection & Network Security Analysis\nBuilt an advanced AI system combining computer vision for acne detection with network security vulnerability analysis\nTechnologies: Flask, ResNet50, Attack Trees, Python, OpenCV\n\nSpotify-Inspired Data Engineering Pipeline\nDesigned and implemented a complete ETL pipeline for music data processing and analytics dashboard\nTechnologies: AWS S3, Glue, Athena, QuickSight\n\nMCA Rank List Analysis Using Big Data\nPerformed comprehensive analysis of MCA admission rankings using big data processing techniques\nTechnologies: Apache Spark, Docker, Python, Data Visualization\n\nUSAFE Emergency Response Mobile App\nDeveloped Android emergency response application with real-time location tracking and emergency contact features\nTechnologies: Java, Android Studio, Google Maps API, Firebase');
+    // Style project items
+    const projectItems = clonedElement.querySelectorAll('.project-item');
+    projectItems.forEach(item => {
+      item.style.cssText = `
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px dotted #ddd;
+        page-break-inside: avoid;
+      `;
+    });
     
-    // Certifications
-    addSection('CERTIFICATIONS', '• Python for Data Science - NPTEL (2023)\n• Flask Framework Development - EduYear (2023)\n• Certified Full-Stack Developer - Revamp Academy (2024)\n• Ethical Hacking Fundamentals - Cappriosec Securities (2023)\n• Data Engineering Basics - EduYear (2024)');
+    // Style tech used elements
+    const techUsedElements = clonedElement.querySelectorAll('.tech-used');
+    techUsedElements.forEach(tech => {
+      tech.style.cssText = `
+        color: #1e40af;
+        font-size: 10px;
+        font-style: italic;
+      `;
+    });
     
-    // Achievements
-    addSection('ACHIEVEMENTS & AWARDS', '• Academic Excellence: BCA Gold Medalist with highest GPA in the program\n• Chess Championships: 1st Place (2022), 2nd Place (2023) in inter-college tournaments\n• Creative Arts: 1st Prize winner in hairdressing and modeling competitions\n• Project Leadership: Led Project Nexus mentorship program for junior students\n• Language Learning: Active Duolingo user with 365+ day learning streak');
+    tempContainer.appendChild(clonedElement);
+    document.body.appendChild(tempContainer);
     
-    // Save PDF
-    doc.save('Kaviya_M_Resume.pdf');
-    showNotification('Resume PDF downloaded successfully!', 'success');
+    // PDF options
+    const options = {
+      margin: [10, 10, 10, 10],
+      filename: 'Kaviya_M_Resume.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { 
+        scale: 2,
+        useCORS: true,
+        letterRendering: true,
+        allowTaint: false
+      },
+      jsPDF: { 
+        unit: 'mm', 
+        format: 'a4', 
+        orientation: 'portrait',
+        compressPDF: true
+      },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    };
+    
+    // Generate PDF
+    html2pdf().set(options).from(clonedElement).save().then(() => {
+      document.body.removeChild(tempContainer);
+      showNotification('Resume PDF downloaded successfully!', 'success');
+    }).catch((error) => {
+      console.error('PDF generation failed:', error);
+      document.body.removeChild(tempContainer);
+      showNotification('PDF generation failed. Please try again.', 'error');
+    });
   }
 }
 
