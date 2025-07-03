@@ -1,45 +1,359 @@
-<!--
-  Hit RUN to see this project in action!
-  
-  This project will auto-refresh as you edit the HTML, CSS and JS. See README.md for more info (including how to disable auto-refresh and install packages).
--->
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Replit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaviya M - Portfolio</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <main>
-    <h1 class="title">Welcome to HTML on Replit!</h1>
-    <p class="description">Get started by editing
-      <code class="code">index.html</code>. The webview will auto-refresh as you edit! (See <code
-        class="code">README.md</code> if you want to
-      disable auto-refresh.)
-    </p>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">Kaviya M</div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
 
-    <section class="grid">
-      <a href="https://replit.com/learn" class='card'>
-        <h2>Learn &rarr;</h2>
-        <p>Find tutorials on Replit to learn more.</p>
-      </a>
+  <!-- Home Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="highlight">AI/ML Enthusiast</span> | 
+        <span class="highlight">Full Stack Developer</span> | 
+        <span class="highlight">Cloud Data Engineer</span>
+      </h1>
+      <p class="hero-subtitle">
+        MCA Graduate & BCA Gold Medalist passionate about building innovative solutions 
+        with modern technologies and artificial intelligence.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#" class="btn btn-secondary" onclick="downloadResume()">Download Resume</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="profile-circle">
+        <i class="fas fa-user fa-8x"></i>
+      </div>
+    </div>
+  </section>
 
-      <a href="https://docs.replit.com/category/deployments" class='card'>
-        <h2>Deploy &rarr;</h2>
-        <p>
-          After you are happy with this app, deploy it on Replit!
-        </p>
-      </a>
-    </section>
-  </main>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I'm Kaviya M, a passionate Full Stack Developer and AI/ML Enthusiast currently pursuing 
+            my MCA from College of Engineering, Anna University (graduating 2025). As a BCA Gold Medalist, 
+            I bring a strong academic foundation combined with practical experience in modern technologies.
+          </p>
+          <p>
+            My expertise spans across React, Flask, PyTorch, MongoDB, AWS, and PySpark. I'm particularly 
+            interested in leveraging AI and machine learning to solve real-world problems while building 
+            scalable web applications and data engineering solutions.
+          </p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>mkaviya1701@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+91 6381780483</span>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-github"></i>
+              <a href="https://github.com/kavyaaa1701" target="_blank">github.com/kavyaaa1701</a>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-linkedin"></i>
+              <a href="https://linkedin.com/in/mkavya10100" target="_blank">linkedin.com/in/mkavya10100</a>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="profile-photo">
+            <i class="fas fa-user fa-6x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script type="module" src="script.js"></script>
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3>Ex-Army Helpline Website</h3>
+          <p>A comprehensive support platform for ex-army personnel with modern web technologies.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Web3 Forms</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+        </div>
 
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>AI-Based Acne Detection & Network Security</h3>
+          <p>Advanced AI system combining computer vision for acne detection with network security analysis.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">ResNet50</span>
+            <span class="tech-tag">Attack Trees</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>MCA Rank List Analysis</h3>
+          <p>Big data analysis project for processing and analyzing MCA admission rank lists.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Apache Spark</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Data Analysis</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fab fa-spotify"></i>
+          </div>
+          <h3>Spotify-Inspired Data Engineering</h3>
+          <p>Complete data pipeline solution inspired by Spotify's data architecture using AWS services.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">AWS S3</span>
+            <span class="tech-tag">Glue</span>
+            <span class="tech-tag">Athena</span>
+            <span class="tech-tag">PySpark</span>
+            <span class="tech-tag">QuickSight</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>USAFE Emergency App</h3>
+          <p>Android emergency response application with real-time location tracking and mapping.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Android Studio</span>
+            <span class="tech-tag">Maps API</span>
+            <span class="tech-tag">Mobile Development</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Project Nexus</h3>
+          <p>Mentorship and project coaching initiative to guide students in their technical journey.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Mentorship</span>
+            <span class="tech-tag">Leadership</span>
+            <span class="tech-tag">Project Management</span>
+            <span class="tech-tag">Community</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-categories">
+        <div class="skill-category">
+          <h3><i class="fas fa-code"></i> Languages</h3>
+          <div class="skills-list">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Java</span>
+            <span class="skill-item">HTML</span>
+            <span class="skill-item">CSS</span>
+            <span class="skill-item">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+          <div class="skills-list">
+            <span class="skill-item">React</span>
+            <span class="skill-item">Flask</span>
+            <span class="skill-item">Tailwind CSS</span>
+            <span class="skill-item">PyTorch</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-cloud"></i> Cloud & Data</h3>
+          <div class="skills-list">
+            <span class="skill-item">AWS</span>
+            <span class="skill-item">PySpark</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-tools"></i> Tools</h3>
+          <div class="skills-list">
+            <span class="skill-item">Git</span>
+            <span class="skill-item">Android Studio</span>
+            <span class="skill-item">VS Code</span>
+            <span class="skill-item">Apache Spark</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="certifications">
+        <h3>Certifications</h3>
+        <div class="cert-grid">
+          <div class="cert-item">
+            <i class="fas fa-certificate"></i>
+            <span>Python for Data Science – NPTEL</span>
+          </div>
+          <div class="cert-item">
+            <i class="fas fa-certificate"></i>
+            <span>Flask Framework – EduYear</span>
+          </div>
+          <div class="cert-item">
+            <i class="fas fa-certificate"></i>
+            <span>Certified Full-Stack Developer – Revamp Academy</span>
+          </div>
+          <div class="cert-item">
+            <i class="fas fa-certificate"></i>
+            <span>Ethical Hacking – Cappriosec Securities</span>
+          </div>
+          <div class="cert-item">
+            <i class="fas fa-certificate"></i>
+            <span>Data Engineering Basics – EduYear</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="achievements">
+    <div class="container">
+      <h2 class="section-title">Achievements</h2>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h3>BCA Gold Medalist</h3>
+          <p>Achieved the highest academic performance in Bachelor of Computer Applications program.</p>
+        </div>
+
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-chess"></i>
+          </div>
+          <h3>Chess Champion & Runner-Up</h3>
+          <p>1st place in 2022 and 2nd place in 2023 in competitive chess tournaments.</p>
+        </div>
+
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-crown"></i>
+          </div>
+          <h3>Hairdressing & Modeling</h3>
+          <p>1st prize winner in hairdressing and modeling competitions.</p>
+        </div>
+
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-microphone"></i>
+          </div>
+          <h3>Multi-talented Participant</h3>
+          <p>Active participant in speech, singing, and photography competitions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+        
+        <div class="contact-links">
+          <h3>Connect with me</h3>
+          <div class="social-links">
+            <a href="https://github.com/kavyaaa1701" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/mkavya10100" target="_blank" class="social-link">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="mailto:mkaviya1701@gmail.com" class="social-link">
+              <i class="fas fa-envelope"></i>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Kaviya M. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
