@@ -141,58 +141,134 @@ function showNotification(message, type) {
   }, 5000);
 }
 
-// Resume download function
+// Resume download function (legacy text version)
 function downloadResume() {
-  // Create a simple resume content
-  const resumeContent = `
-KAVIYA M
-AI/ML Enthusiast | Full Stack Developer | Cloud Data Engineer
-Email: mkaviya1701@gmail.com | Phone: +91 6381780483
-GitHub: github.com/kavyaaa1701 | LinkedIn: linkedin.com/in/mkavya10100
+  downloadResumeAsPDF();
+}
 
-EDUCATION
-• MCA - College of Engineering, Anna University (2025)
-• BCA - Gold Medalist
-
-TECHNICAL SKILLS
-• Languages: Python, Java, HTML, CSS, JavaScript
-• Frameworks: React, Flask, PyTorch, Tailwind CSS
-• Cloud & Data: AWS, PySpark, Docker, MongoDB
-• Tools: Git, Android Studio, VS Code
-
-KEY PROJECTS
-• Ex-Army Helpline Website (React, Tailwind CSS, Web3 Forms, Vercel)
-• AI-Based Acne Detection & Network Security (Flask, ResNet50, Attack Trees)
-• MCA Rank List Analysis (Apache Spark, Docker, Python)
-• Spotify-Inspired Data Engineering (AWS S3, Glue, Athena, PySpark, QuickSight)
-• USAFE Emergency App (Java, Android Studio, Maps API)
-• Project Nexus (Mentorship & project coaching initiative)
-
-CERTIFICATIONS
-• Python for Data Science – NPTEL
-• Flask Framework – EduYear
-• Certified Full-Stack Developer – Revamp Academy
-• Ethical Hacking – Cappriosec Securities
-• Data Engineering Basics – EduYear
-
-ACHIEVEMENTS
-• BCA Gold Medalist
-• Chess Champion (2022), Runner-Up (2023)
-• 1st prize in hairdressing & modeling
-• Active participant in speech, singing, and photography
-  `;
+// Enhanced PDF download function
+function downloadResumeAsPDF() {
+  // Create a print-friendly version of the resume
+  const resumeElement = document.querySelector('.resume-preview');
+  const printWindow = window.open('', '_blank');
   
-  const blob = new Blob([resumeContent], { type: 'text/plain' });
-  const url = window.URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'Kaviya_M_Resume.txt';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  window.URL.revokeObjectURL(url);
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Kaviya M - Resume</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+          font-family: 'Arial', sans-serif; 
+          line-height: 1.6; 
+          color: #333; 
+          max-width: 210mm; 
+          margin: 0 auto; 
+          padding: 20mm;
+          background: white;
+        }
+        .resume-header { text-align: center; margin-bottom: 30px; }
+        .resume-header h3 { font-size: 28px; color: #1e293b; margin-bottom: 8px; }
+        .resume-header p { font-size: 16px; color: #1e40af; margin-bottom: 15px; }
+        .resume-contact { 
+          display: grid; 
+          grid-template-columns: repeat(2, 1fr); 
+          gap: 8px; 
+          font-size: 12px; 
+          color: #666;
+        }
+        .resume-section { margin-bottom: 25px; }
+        .resume-section h4 { 
+          font-size: 16px; 
+          color: #1e293b; 
+          border-bottom: 1px solid #ccc; 
+          padding-bottom: 5px; 
+          margin-bottom: 10px; 
+        }
+        .resume-item { font-size: 13px; color: #555; line-height: 1.5; }
+        .resume-item strong { color: #1e293b; }
+        @media print {
+          body { margin: 0; padding: 15mm; }
+          .resume-section { break-inside: avoid; }
+        }
+      </style>
+    </head>
+    <body>
+      ${resumeElement.innerHTML}
+    </body>
+    </html>
+  `);
   
-  showNotification('Resume downloaded successfully!', 'success');
+  printWindow.document.close();
+  
+  // Wait for content to load then trigger print
+  setTimeout(() => {
+    printWindow.print();
+    setTimeout(() => {
+      printWindow.close();
+    }, 500);
+  }, 250);
+  
+  showNotification('Resume PDF download initiated!', 'success');
+}
+
+// Print resume function
+function printResume() {
+  const resumeElement = document.querySelector('.resume-preview');
+  const printWindow = window.open('', '_blank');
+  
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Kaviya M - Resume</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+          font-family: 'Arial', sans-serif; 
+          line-height: 1.6; 
+          color: #333; 
+          max-width: 210mm; 
+          margin: 0 auto; 
+          padding: 20mm;
+          background: white;
+        }
+        .resume-header { text-align: center; margin-bottom: 30px; }
+        .resume-header h3 { font-size: 28px; color: #1e293b; margin-bottom: 8px; }
+        .resume-header p { font-size: 16px; color: #1e40af; margin-bottom: 15px; }
+        .resume-contact { 
+          display: grid; 
+          grid-template-columns: repeat(2, 1fr); 
+          gap: 8px; 
+          font-size: 12px; 
+          color: #666;
+        }
+        .resume-section { margin-bottom: 25px; page-break-inside: avoid; }
+        .resume-section h4 { 
+          font-size: 16px; 
+          color: #1e293b; 
+          border-bottom: 1px solid #ccc; 
+          padding-bottom: 5px; 
+          margin-bottom: 10px; 
+        }
+        .resume-item { font-size: 13px; color: #555; line-height: 1.5; }
+        .resume-item strong { color: #1e293b; }
+        @page { margin: 15mm; }
+      </style>
+    </head>
+    <body>
+      ${resumeElement.innerHTML}
+    </body>
+    </html>
+  `);
+  
+  printWindow.document.close();
+  printWindow.focus();
+  
+  setTimeout(() => {
+    printWindow.print();
+  }, 250);
 }
 
 // Typing animation for hero title

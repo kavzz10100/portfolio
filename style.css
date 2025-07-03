@@ -51,6 +51,17 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   color: #2d3748;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-logo i {
+  color: #1e40af;
+  font-size: 1.75rem;
+}
+
+.nav-logo span {
   background: linear-gradient(135deg, #2d3748, #4a5568);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -508,6 +519,89 @@ section {
   line-height: 1.6;
 }
 
+/* Resume Section */
+.resume {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.resume-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.resume-preview {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(30, 64, 175, 0.1);
+  margin-bottom: 2rem;
+  border: 1px solid #e2e8f0;
+}
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.resume-header h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.resume-header p {
+  font-size: 1.25rem;
+  color: #1e40af;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.resume-contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.resume-section {
+  margin-bottom: 2rem;
+}
+
+.resume-section h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.resume-item {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.resume-item strong {
+  color: #1e293b;
+}
+
+.resume-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.resume-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Contact Section */
 .contact {
   background: white;
@@ -677,6 +771,26 @@ section {
   }
 }
 
+@media (max-width: 768px) {
+  .resume-preview {
+    padding: 2rem;
+  }
+  
+  .resume-header h3 {
+    font-size: 2rem;
+  }
+  
+  .resume-contact {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .resume-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media (max-width: 480px) {
   .hero-title {
     font-size: 1.75rem;
@@ -690,5 +804,17 @@ section {
   .skill-category,
   .achievement-card {
     padding: 1.5rem;
+  }
+  
+  .resume-preview {
+    padding: 1.5rem;
+  }
+  
+  .resume-header h3 {
+    font-size: 1.75rem;
+  }
+  
+  .resume-header p {
+    font-size: 1rem;
   }
 }
