@@ -148,141 +148,95 @@ function downloadResume() {
 
 // Enhanced PDF download function
 function downloadResumeAsPDF() {
-  // Create a print-friendly version of the resume
-  const resumeElement = document.querySelector('.resume-preview');
-  const printWindow = window.open('', '_blank');
+  const resumeContent = `
+KAVIYA M
+Full Stack Developer | AI/ML Enthusiast | Cloud Data Engineer
+
+📧 mkaviya1701@gmail.com | 📱 +91 6381780483
+🔗 github.com/kavyaaa1701 | 💼 linkedin.com/in/mkavya10100
+
+OBJECTIVE
+A passionate and skilled Full Stack Developer with expertise in AI/ML, cloud computing, and data engineering. Seeking to leverage my technical skills, academic achievements, and innovative mindset to contribute to cutting-edge technology projects while continuously learning and growing in the field.
+
+EDUCATION
+Master of Computer Applications (MCA) | 2023-2025
+College of Engineering, Anna University, Chennai
+Graduated: May 2025
+
+Bachelor of Computer Applications (BCA) | 2020-2023
+Gold Medalist - Highest Academic Performance
+Relevant Coursework: Data Structures, Algorithms, Database Management, Web Development
+
+TECHNICAL SKILLS
+Programming Languages: Python, Java, JavaScript, HTML5, CSS3, SQL
+Frameworks & Libraries: React.js, Flask, PyTorch, Tailwind CSS, Bootstrap, TensorFlow
+Cloud Technologies: AWS (S3, Glue, Athena, QuickSight), Docker
+Databases: MongoDB, MySQL, PostgreSQL
+Tools & Platforms: Git, GitHub, Android Studio, VS Code, Vercel, Linux, Jupyter Notebook
+Other Skills: Machine Learning, Data Analysis, RESTful APIs, Responsive Web Design
+
+PROJECTS
+Ex-Army Helpline Website
+Developed a comprehensive support platform for ex-army personnel with modern responsive design and integrated contact forms
+Technologies: React.js, Tailwind CSS, Web3 Forms, Vercel
+
+AI-Based Acne Detection & Network Security Analysis
+Built an advanced AI system combining computer vision for acne detection with network security vulnerability analysis
+Technologies: Flask, ResNet50, Attack Trees, Python, OpenCV
+
+Spotify-Inspired Data Engineering Pipeline
+Designed and implemented a complete ETL pipeline for music data processing and analytics dashboard
+Technologies: AWS S3, Glue, Athena, QuickSight
+
+MCA Rank List Analysis Using Big Data
+Performed comprehensive analysis of MCA admission rankings using big data processing techniques
+Technologies: Apache Spark, Docker, Python, Data Visualization
+
+USAFE Emergency Response Mobile App
+Developed Android emergency response application with real-time location tracking and emergency contact features
+Technologies: Java, Android Studio, Google Maps API, Firebase
+
+CERTIFICATIONS
+• Python for Data Science - NPTEL (2023)
+• Flask Framework Development - EduYear (2023)
+• Certified Full-Stack Developer - Revamp Academy (2024)
+• Ethical Hacking Fundamentals - Cappriosec Securities (2023)
+• Data Engineering Basics - EduYear (2024)
+
+ACHIEVEMENTS & AWARDS
+• Academic Excellence: BCA Gold Medalist with highest GPA in the program
+• Chess Championships: 1st Place (2022), 2nd Place (2023) in inter-college tournaments
+• Creative Arts: 1st Prize winner in hairdressing and modeling competitions
+• Project Leadership: Led Project Nexus mentorship program for junior students
+• Language Learning: Active Duolingo user with 365+ day learning streak
+
+EXTRACURRICULAR ACTIVITIES
+• Active participant in competitive programming contests and hackathons
+• Photography enthusiast with focus on technical and creative composition
+• Regular contributor to open source projects on GitHub
+• Mentor for junior students in technical project development
+• Chess player with tournament experience and strategic thinking skills
+
+INTERESTS
+Artificial Intelligence, Machine Learning, Cloud Computing, Data Science, Web Development, Mobile App Development, Cybersecurity, Chess, Photography, Creative Arts, Language Learning, Open Source Contribution
+  `;
+
+  // Create a downloadable text file
+  const blob = new Blob([resumeContent], { type: 'text/plain' });
+  const url = window.URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'Kaviya_M_Resume.txt';
   
-  printWindow.document.write(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Kaviya M - Resume</title>
-      <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-          font-family: 'Arial', sans-serif; 
-          line-height: 1.5; 
-          color: #333; 
-          max-width: 210mm; 
-          margin: 0 auto; 
-          padding: 20mm;
-          background: white;
-          font-size: 12px;
-        }
-        .resume-header { 
-          text-align: center; 
-          margin-bottom: 25px; 
-          border-bottom: 2px solid #1e40af;
-          padding-bottom: 15px;
-        }
-        .resume-header h3 { 
-          font-size: 24px; 
-          color: #1e293b; 
-          margin-bottom: 6px; 
-          font-weight: 700;
-          letter-spacing: 1px;
-        }
-        .resume-title { 
-          font-size: 14px; 
-          color: #1e40af; 
-          margin-bottom: 12px; 
-          font-weight: 600;
-        }
-        .resume-contact { 
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          font-size: 11px; 
-          color: #666;
-        }
-        .contact-row {
-          display: flex;
-          justify-content: space-between;
-          gap: 20px;
-        }
-        .resume-section { 
-          margin-bottom: 20px; 
-          page-break-inside: avoid;
-        }
-        .resume-section h4 { 
-          font-size: 14px; 
-          color: #1e293b; 
-          border-bottom: 1px solid #ccc; 
-          padding-bottom: 4px; 
-          margin-bottom: 8px; 
-          font-weight: 700;
-          text-transform: uppercase;
-        }
-        .resume-item { 
-          font-size: 11px; 
-          color: #555; 
-          line-height: 1.4; 
-        }
-        .resume-item strong { color: #1e293b; }
-        .edu-item {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 2px;
-        }
-        .year { color: #1e40af; font-weight: 500; }
-        .institution { 
-          color: #666; 
-          margin-bottom: 8px; 
-          font-size: 10px;
-        }
-        .skill-row {
-          margin-bottom: 6px;
-          line-height: 1.4;
-        }
-        .project-item {
-          margin-bottom: 12px;
-          padding-bottom: 8px;
-          border-bottom: 1px dotted #ddd;
-        }
-        .project-item:last-child {
-          border-bottom: none;
-        }
-        .project-desc {
-          color: #666;
-          margin: 2px 0;
-          font-size: 10px;
-        }
-        .tech-used {
-          color: #1e40af;
-          font-size: 10px;
-          font-style: italic;
-        }
-        .cert-list, .achievement-list {
-          line-height: 1.6;
-        }
-        .interests {
-          color: #666;
-          line-height: 1.4;
-          font-style: italic;
-        }
-        @media print {
-          body { margin: 0; padding: 15mm; }
-          .resume-section { break-inside: avoid; }
-        }
-      </style>
-    </head>
-    <body>
-      ${resumeElement.innerHTML}
-    </body>
-    </html>
-  `);
+  // Append to body, click, and remove
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
   
-  printWindow.document.close();
+  // Clean up the object URL
+  window.URL.revokeObjectURL(url);
   
-  // Wait for content to load then trigger print
-  setTimeout(() => {
-    printWindow.print();
-    setTimeout(() => {
-      printWindow.close();
-    }, 500);
-  }, 250);
-  
-  showNotification('Professional resume PDF download initiated!', 'success');
+  showNotification('Resume downloaded successfully!', 'success');
 }
 
 // Print resume function
