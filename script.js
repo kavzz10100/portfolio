@@ -161,33 +161,105 @@ function downloadResumeAsPDF() {
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
           font-family: 'Arial', sans-serif; 
-          line-height: 1.6; 
+          line-height: 1.5; 
           color: #333; 
           max-width: 210mm; 
           margin: 0 auto; 
           padding: 20mm;
           background: white;
+          font-size: 12px;
         }
-        .resume-header { text-align: center; margin-bottom: 30px; }
-        .resume-header h3 { font-size: 28px; color: #1e293b; margin-bottom: 8px; }
-        .resume-header p { font-size: 16px; color: #1e40af; margin-bottom: 15px; }
+        .resume-header { 
+          text-align: center; 
+          margin-bottom: 25px; 
+          border-bottom: 2px solid #1e40af;
+          padding-bottom: 15px;
+        }
+        .resume-header h3 { 
+          font-size: 24px; 
+          color: #1e293b; 
+          margin-bottom: 6px; 
+          font-weight: 700;
+          letter-spacing: 1px;
+        }
+        .resume-title { 
+          font-size: 14px; 
+          color: #1e40af; 
+          margin-bottom: 12px; 
+          font-weight: 600;
+        }
         .resume-contact { 
-          display: grid; 
-          grid-template-columns: repeat(2, 1fr); 
-          gap: 8px; 
-          font-size: 12px; 
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          font-size: 11px; 
           color: #666;
         }
-        .resume-section { margin-bottom: 25px; }
+        .contact-row {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+        }
+        .resume-section { 
+          margin-bottom: 20px; 
+          page-break-inside: avoid;
+        }
         .resume-section h4 { 
-          font-size: 16px; 
+          font-size: 14px; 
           color: #1e293b; 
           border-bottom: 1px solid #ccc; 
-          padding-bottom: 5px; 
-          margin-bottom: 10px; 
+          padding-bottom: 4px; 
+          margin-bottom: 8px; 
+          font-weight: 700;
+          text-transform: uppercase;
         }
-        .resume-item { font-size: 13px; color: #555; line-height: 1.5; }
+        .resume-item { 
+          font-size: 11px; 
+          color: #555; 
+          line-height: 1.4; 
+        }
         .resume-item strong { color: #1e293b; }
+        .edu-item {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 2px;
+        }
+        .year { color: #1e40af; font-weight: 500; }
+        .institution { 
+          color: #666; 
+          margin-bottom: 8px; 
+          font-size: 10px;
+        }
+        .skill-row {
+          margin-bottom: 6px;
+          line-height: 1.4;
+        }
+        .project-item {
+          margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 1px dotted #ddd;
+        }
+        .project-item:last-child {
+          border-bottom: none;
+        }
+        .project-desc {
+          color: #666;
+          margin: 2px 0;
+          font-size: 10px;
+        }
+        .tech-used {
+          color: #1e40af;
+          font-size: 10px;
+          font-style: italic;
+        }
+        .cert-list, .achievement-list {
+          line-height: 1.6;
+        }
+        .interests {
+          color: #666;
+          line-height: 1.4;
+          font-style: italic;
+        }
         @media print {
           body { margin: 0; padding: 15mm; }
           .resume-section { break-inside: avoid; }
@@ -210,7 +282,7 @@ function downloadResumeAsPDF() {
     }, 500);
   }, 250);
   
-  showNotification('Resume PDF download initiated!', 'success');
+  showNotification('Professional resume PDF download initiated!', 'success');
 }
 
 // Print resume function
