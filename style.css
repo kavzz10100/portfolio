@@ -1,4 +1,7 @@
+` tags.
 
+```
+<replit_final_file>
 * {
   margin: 0;
   padding: 0;
@@ -266,7 +269,7 @@ section {
 .about-text p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
-  color: #4a5568;
+  color: #64748b;
 }
 
 .contact-info {
@@ -278,21 +281,17 @@ section {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  color: #718096;
+  color: #64748b;
 }
 
 .contact-item i {
-  color: #2d3748;
+  color: #1e40af;
   width: 20px;
 }
 
 .contact-item a {
-  color: #2d3748;
+  color: #1e40af;
   text-decoration: none;
-}
-
-.contact-item a:hover {
-  text-decoration: underline;
 }
 
 .about-image {
@@ -322,7 +321,7 @@ section {
 
 /* Projects Section */
 .projects {
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
 }
 
 .projects-grid {
@@ -335,21 +334,21 @@ section {
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(45, 55, 72, 0.1);
+  box-shadow: 0 4px 20px rgba(30, 64, 175, 0.1);
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(45, 55, 72, 0.15);
+  box-shadow: 0 12px 30px rgba(30, 64, 175, 0.15);
 }
 
 .project-icon {
   width: 60px;
   height: 60px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #2d3748, #4a5568);
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -362,29 +361,13 @@ section {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #2d3748;
+  color: #1e293b;
 }
 
 .project-card p {
-  color: #718096;
+  color: #64748b;
   margin-bottom: 1.5rem;
   line-height: 1.6;
-}
-
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tech-tag {
-  padding: 0.5rem 1rem;
-  background: #f7fafc;
-  color: #2d3748;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid #e2e8f0;
 }
 
 /* Skills Section */
@@ -400,7 +383,7 @@ section {
 }
 
 .skill-category {
-  background: #f7fafc;
+  background: #f8fafc;
   padding: 2rem;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
@@ -409,11 +392,11 @@ section {
 
 .skill-category:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(45, 55, 72, 0.1);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
 }
 
 .skill-category h3 {
-  color: #2d3748;
+  color: #1e293b;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -421,7 +404,7 @@ section {
 }
 
 .skill-category h3 i {
-  color: #4a5568;
+  color: #3b82f6;
 }
 
 .skills-list {
@@ -433,23 +416,23 @@ section {
 .skill-item {
   padding: 0.75rem 1rem;
   background: white;
-  color: #2d3748;
+  color: #1e40af;
   border-radius: 8px;
   font-weight: 500;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #dbeafe;
   transition: all 0.3s ease;
 }
 
 .skill-item:hover {
-  background: #2d3748;
+  background: #1e40af;
   color: white;
-  border-color: #2d3748;
+  border-color: #1e40af;
 }
 
 .certifications h3 {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  color: #2d3748;
+  color: #1e293b;
   text-align: center;
 }
 
@@ -464,19 +447,19 @@ section {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: #f7fafc;
+  background: #f8fafc;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
 }
 
 .cert-item i {
-  color: #4a5568;
+  color: #3b82f6;
   font-size: 1.25rem;
 }
 
 /* Achievements Section */
 .achievements {
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
 }
 
 .achievements-grid {
@@ -490,21 +473,21 @@ section {
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(45, 55, 72, 0.1);
+  box-shadow: 0 4px 20px rgba(30, 64, 175, 0.1);
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
 }
 
 .achievement-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(45, 55, 72, 0.15);
+  box-shadow: 0 12px 30px rgba(30, 64, 175, 0.15);
 }
 
 .achievement-icon {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #4a5568, #718096);
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -517,11 +500,11 @@ section {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #2d3748;
+  color: #1e293b;
 }
 
 .achievement-card p {
-  color: #718096;
+  color: #64748b;
   line-height: 1.6;
 }
 
@@ -539,7 +522,7 @@ section {
 }
 
 .contact-form {
-  background: #f7fafc;
+  background: #f8fafc;
   padding: 2rem;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
@@ -563,13 +546,13 @@ section {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #2d3748;
-  box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
 }
 
 .contact-links h3 {
   margin-bottom: 2rem;
-  color: #2d3748;
+  color: #1e293b;
 }
 
 .social-links {
@@ -583,16 +566,16 @@ section {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: #f7fafc;
+  background: #f8fafc;
   border-radius: 8px;
   text-decoration: none;
-  color: #2d3748;
+  color: #1e40af;
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
 }
 
 .social-link:hover {
-  background: #2d3748;
+  background: #1e40af;
   color: white;
   transform: translateY(-2px);
 }
