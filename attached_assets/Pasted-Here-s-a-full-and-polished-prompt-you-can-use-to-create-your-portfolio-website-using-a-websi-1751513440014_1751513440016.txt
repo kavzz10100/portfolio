@@ -1,7 +1,5 @@
 Here’s a **full and polished prompt** you can use to create your **portfolio website** using a website generator, AI builder, or with a developer/designer — based 100% on your resume:
 
----
-
 ### ✅ **Full Prompt to Create Portfolio Website for Kaviya M**
 
 > Build a modern, responsive **portfolio website** for **Kaviya M**, a Full Stack Developer and AI/ML Enthusiast. The website should reflect her technical skills, academic achievements, and innovative projects.
