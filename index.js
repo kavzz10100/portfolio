@@ -425,37 +425,36 @@ function typeWriter() {
     const currentTitle = titles[titleIndex];
     
     if (isDeleting) {
-      heroTitle.innerHTML = `<span class="highlight">${currentTitle.substring(0, charIndex - 1)}</span>`;
+      heroTitle.innerHTML = `<span class="highlight">${currentTitle.substring(0, charIndex)}</span>`;
       charIndex--;
     } else {
-      heroTitle.innerHTML = `<span class="highlight">${currentTitle.substring(0, charIndex + 1)}</span>`;
+      heroTitle.innerHTML = `<span class="highlight">${currentTitle.substring(0, charIndex)}</span>`;
       charIndex++;
     }
     
     let typeSpeed = isDeleting ? 50 : 100;
     
-    if (!isDeleting && charIndex === currentTitle.length) {
-      typeSpeed = 2000;
+    if (!isDeleting && charIndex > currentTitle.length) {
+      typeSpeed = 2000; // Pause at the end of the word
       isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
+    } else if (isDeleting && charIndex < 0) {
       isDeleting = false;
       titleIndex = (titleIndex + 1) % titles.length;
-      typeSpeed = 500;
+      charIndex = 0;
+      typeSpeed = 500; // Pause before typing the next word
     }
     
     setTimeout(type, typeSpeed);
   }
   
-  // Start typing animation after page load
-  setTimeout(type, 1000);
+  if (heroTitle) {
+    type();
+  }
 }
 
-// Initialize typing animation when page loads
-window.addEventListener('load', () => {
-  // Restore original title for initial load
-  setTimeout(() => {
-    typeWriter();
-  }, 2000);
+// Initialize typing animation immediately when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  typeWriter();
 });
 
 // Parallax effect for hero section
