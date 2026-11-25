@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,7 +166,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 25px;
+      gap: 22px;
       list-style: none;
     }
 
@@ -321,16 +322,19 @@
     .btn-primary {
       color: white;
       background: var(--text);
+      border: 1px solid var(--text);
     }
 
     .btn-primary:hover {
       background: var(--accent-dark);
+      border-color: var(--accent-dark);
       transform: translateY(-3px);
     }
 
     .btn-outline {
       border: 1px solid var(--border);
       background: white;
+      color: var(--text);
     }
 
     .btn-outline:hover {
@@ -910,6 +914,217 @@
     }
 
     /* =========================================
+11B. RESUME PREVIEW SECTION
+    ========================================= */
+
+    .resume-section {
+      background: #f2f0eb;
+    }
+
+    .resume-header-bar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .resume-header-bar .section-heading {
+      margin-bottom: 0;
+    }
+
+    .resume-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .resume-sheet {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 18px 45px rgba(32, 33, 31, 0.08);
+      overflow: hidden;
+    }
+
+    .resume-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 22px;
+      background: #f8f7f3;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .resume-dots {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .resume-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #dcd8ce;
+    }
+
+    .resume-dots span:first-child { background: #e5988b; }
+    .resume-dots span:nth-child(2) { background: #ecc676; }
+    .resume-dots span:nth-child(3) { background: #8cc49d; }
+
+    .resume-doc {
+      padding: clamp(24px, 4vw, 44px);
+      color: var(--text);
+    }
+
+    .r-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--text);
+    }
+
+    .r-name {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .r-subtitle {
+      color: var(--accent-dark);
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .r-contact-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      font-size: 12px;
+      color: #4f504a;
+      font-weight: 600;
+    }
+
+    .r-contact-list a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .r-block {
+      margin-top: 20px;
+    }
+
+    .r-block-title {
+      font-family: "Manrope", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-dark);
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 10px;
+    }
+
+    .r-summary {
+      font-size: 13px;
+      line-height: 1.68;
+      color: #4a4b46;
+    }
+
+    .r-skills-list {
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+      color: #4a4b46;
+    }
+
+    .r-skills-list strong {
+      color: var(--text);
+    }
+
+    .r-item {
+      margin-bottom: 13px;
+    }
+
+    .r-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .r-item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .r-item-head h4 {
+      font-family: "Manrope", sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .r-item-head span {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .r-item-sub {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #5f605a;
+      margin-top: 1px;
+    }
+
+    .r-bullets {
+      margin-top: 5px;
+      padding-left: 18px;
+      font-size: 13px;
+      color: #4a4b46;
+      line-height: 1.6;
+    }
+
+    .r-bullets li {
+      margin-bottom: 3px;
+    }
+
+    .r-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .r-badge-tag {
+      display: inline-block;
+      background: #fdf5e4;
+      color: #805b13;
+      border: 1px solid #ead196;
+      border-radius: 5px;
+      padding: 1px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-left: 6px;
+    }
+
+    /* =========================================
 12. CONTACT
     ========================================= */
 
@@ -1082,7 +1297,7 @@
       }
 
       .nav-links {
-        gap: 16px;
+        gap: 14px;
       }
 
       .nav-links a {
@@ -1110,7 +1325,7 @@
 
     @media (max-width: 950px) {
       .nav-links {
-        gap: 12px;
+        gap: 10px;
       }
 
       .nav-links a {
@@ -1195,7 +1410,8 @@
 
       .hero-grid,
       .about-grid,
-      .contact-grid {
+      .contact-grid,
+      .r-two-col {
         grid-template-columns: 1fr;
         gap: 24px;
       }
@@ -1281,6 +1497,10 @@
         width: 95px;
         height: 55px;
       }
+
+      .r-contact-list {
+        align-items: flex-start;
+      }
     }
 
     /* =========================================
@@ -1349,7 +1569,7 @@
     }
 
     /* =========================================
-18. ACCESSIBILITY
+18. ACCESSIBILITY & PRINT
     ========================================= */
 
     @media (prefers-reduced-motion: reduce) {
@@ -1367,6 +1587,27 @@
       .reveal {
         opacity: 1;
         transform: none;
+      }
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #resumeSheet,
+      #resumeSheet * {
+        visibility: visible;
+      }
+      #resumeSheet {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+      }
+      .resume-toolbar {
+        display: none;
       }
     }
   </style>
@@ -1388,6 +1629,7 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#resume">Resume</a></li>
         <li class="mobile-hire-item"><a href="#contact" class="nav-hire">Contact</a></li>
       </ul>
 
@@ -1432,7 +1674,7 @@
               Explore My Work <i class="fa-solid fa-arrow-right"></i>
             </a>
 
-            <a href="resume.pdf" class="btn btn-outline" target="_blank">
+            <a href="KAVIYA_RESUME.pdf" class="btn btn-outline" download>
               <i class="fa-solid fa-download"></i> Download Resume
             </a>
           </div>
@@ -1937,6 +2179,214 @@
               Recognized with a Gold Medal presented by the
               Governor of Tamil Nadu.
             </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESUME PREVIEW -->
+
+    <section class="section resume-section" id="resume">
+      <div class="container">
+
+        <div class="resume-header-bar reveal">
+          <div class="section-heading">
+            
+            <h2>Resume Preview</h2>
+            <p>Quickly review my qualifications inline or download the full PDF copy.</p>
+          </div>
+
+          <div class="resume-actions">
+            <button type="button" class="btn btn-outline" onclick="window.print()">
+              <i class="fa-solid fa-print"></i> Print
+            </button>
+            <a href="KAVIYA_RESUME.pdf" class="btn btn-primary" download>
+              <i class="fa-solid fa-download"></i> Download PDF
+            </a>
+          </div>
+        </div>
+
+        <div class="resume-sheet reveal" id="resumeSheet">
+          <div class="resume-toolbar">
+            <div class="resume-dots">
+              <span></span><span></span><span></span>
+            </div>
+            
+            <span><i class="fa-regular fa-file-pdf"></i> 2 Pages</span>
+          </div>
+
+          <div class="resume-doc">
+            <!-- Header -->
+            <div class="r-top">
+              <div>
+                <h3 class="r-name">KAVIYA M</h3>
+                <div class="r-subtitle">Full Stack Developer | AI/ML Enthusiast</div>
+              </div>
+              <div class="r-contact-list">
+                <span>+91 6381780483 | <a href="mailto:mkaviya1701@gmail.com">mkaviya1701@gmail.com</a></span>
+                <span>
+                  <a href="https://www.linkedin.com/in/mkavya10100" target="_blank" rel="noopener noreferrer">linkedin.com/in/mkavya10100</a> |
+                  <a href="https://github.com/kavzz10100" target="_blank" rel="noopener noreferrer">github.com/kavzz10100</a>
+                </span>
+                <span>Portfolio: <a href="https://portfolio-kaviva-17.vercel.app/" target="_blank" rel="noopener noreferrer">portfolio-kaviva-17.vercel.app</a></span>
+              </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="r-block">
+              <div class="r-block-title">Professional Summary</div>
+              <p class="r-summary">
+                MCA graduate from Anna University and BCA Gold Medalist with a strong passion for Full Stack Development. Completed a Full Stack (MERN) course and a two-month Full Stack Developer internship, gaining hands-on experience in React, Next.js, Node.js, Express.js, and MongoDB. Skilled in Java, Python, C#, ASP.NET Core, SQL, and AI-powered applications. Experienced in building fast, responsive, and SEO-friendly web applications using Next.js, with a focus on performance, server-side rendering, and search visibility.
+              </p>
+            </div>
+
+            <!-- Skills -->
+            <div class="r-block">
+              <div class="r-block-title">Technical Skills</div>
+              <div class="r-skills-list">
+                <div><strong>Programming Languages:</strong> Java, Python, C#, JavaScript</div>
+                <div><strong>Frontend:</strong> React.js, Next.js, HTML5, CSS3, Tailwind CSS</div>
+                <div><strong>Backend:</strong> ASP.NET Core, Flask, Node.js (Basic), Express.js, MVC, Entity Framework, JWT Authentication, LINQ</div>
+                <div><strong>Database:</strong> MySQL, MongoDB</div>
+                <div><strong>Tools &amp; Platforms:</strong> Git, GitHub, Postman, Swagger, Vite, Android Studio, Ubuntu, Power BI</div>
+                <div><strong>AI &amp; Machine Learning:</strong> Machine Learning, Deep Learning, NLP, PyTorch</div>
+                <div><strong>Core Concepts:</strong> Data Structures &amp; Algorithms, OOP, REST APIs, SDLC, DBMS</div>
+              </div>
+            </div>
+
+            <!-- Intern Experience -->
+            <div class="r-block">
+              <div class="r-block-title">Intern Experience</div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>Digital Support Volunteer | Army Welfare Group</h4>
+                  <span>Oct 2025 – Jul 2026</span>
+                </div>
+                <ul class="r-bullets">
+                  <li>Contributed to the development and technical support of web-based welfare applications for ex-servicemen.</li>
+                  <li>Assisted in digitizing service processes and maintaining basic data management systems.</li>
+                </ul>
+              </div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>Full Stack Developer Intern | Revamp Academy</h4>
+                  <span>May 2024 – Jun 2024</span>
+                </div>
+                <ul class="r-bullets">
+                  <li>Worked as a front-end developer, supporting responsive UI development and usability improvements.</li>
+                  <li><strong>Intern Project:</strong> Ex-Army Helpline Website (React, Tailwind CSS, Web3Forms) — developed and deployed a responsive support platform for ex-servicemen with integrated contact forms.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Key Projects -->
+            <div class="r-block">
+              <div class="r-block-title">Key Projects</div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>Ex-Servicemen Helpline Portal | React.js</h4>
+                  <span><a href="https://exarmyhelpline.vercel.app" target="_blank" rel="noopener noreferrer">exarmyhelpline.vercel.app</a></span>
+                </div>
+                <ul class="r-bullets">
+                  <li>Developed and deployed a responsive information and support portal based on real ex-servicemen welfare services, providing centralized welfare guidance and enquiry support.</li>
+                </ul>
+              </div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>Veteran Case Automation System | Flask, React, MongoDB</h4>
+                </div>
+                <ul class="r-bullets">
+                  <li>Built a full-stack welfare case management platform to automate ECHS, pension, scholarship, and financial assistance applications with document checklists, JWT role auth, and SLA monitoring.</li>
+                </ul>
+              </div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>WeSync – Employee Management Portal | MERN Stack</h4>
+                </div>
+                <ul class="r-bullets">
+                  <li>Built a full-stack employee management system with JWT authentication, RBAC, CRUD APIs, employee search, filtering, and CSV export following a layered architecture.</li>
+                </ul>
+              </div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>ESM Welfare AI Assistant | Python, NLP</h4>
+                  <span>Ongoing</span>
+                </div>
+                <ul class="r-bullets">
+                  <li>Developed an AI-powered chatbot answering queries on pensions, welfare schemes, and benefits using intent detection and knowledge-base retrieval.</li>
+                </ul>
+              </div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>ASP.NET Core Web API Development | C#, ASP.NET Core, MongoDB</h4>
+                </div>
+                <ul class="r-bullets">
+                  <li>Built modular RESTful APIs with CRUD operations, JWT authentication, Swagger documentation, Postman testing, and Angular frontend integration.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="r-block">
+              <div class="r-block-title">Education</div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>Master of Computer Applications (MCA) — CGPA: 7.98 / 10</h4>
+                  <span>2023 – 2025</span>
+                </div>
+                <div class="r-item-sub">College of Engineering Guindy, Anna University, Chennai</div>
+              </div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>Bachelor of Computer Applications (BCA) — CGPA: 9.3 / 10 <span class="r-badge-tag">Gold Medalist</span></h4>
+                  <span>2020 – 2023</span>
+                </div>
+                <div class="r-item-sub">Sri Bharathi Women's Arts and Science College, Arni</div>
+              </div>
+
+              <div class="r-item">
+                <div class="r-item-head">
+                  <h4>Higher Secondary &amp; SSLC — Grade 12: 84% | Grade 10: 97%</h4>
+                  <span>2017 – 2020</span>
+                </div>
+                <div class="r-item-sub">Oxford Matriculation Higher Secondary School, Polur</div>
+              </div>
+            </div>
+
+            <!-- Certifications & Achievements -->
+            <div class="r-block r-two-col">
+              <div>
+                <div class="r-block-title">Certifications</div>
+                <ul class="r-bullets">
+                  <li>Certified Full-Stack Developer — Revamp Academy</li>
+                  <li>Data Science and Analytics — Revamp Academy</li>
+                  <li>Python for Data Science — NPTEL</li>
+                  <li>Ethical Hacking &amp; Cybersecurity — Cappriosec Securities</li>
+                  <li>Python Django — EduYear</li>
+                </ul>
+              </div>
+
+              <div>
+                <div class="r-block-title">Achievements &amp; Activities</div>
+                <ul class="r-bullets">
+                  <li><strong>BCA Gold Medalist</strong> — University Rank 1 honors</li>
+                  <li>Class &amp; Placement Representative (2020–2023)</li>
+                  <li>Chess Champion (2022) &amp; Runner-up (2023)</li>
+                  <li>Completed 8-level Hindi language certification</li>
+                </ul>
+              </div>
+            </div>
+
           </div>
         </div>
 
