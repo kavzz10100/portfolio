@@ -1,0 +1,81 @@
+Here’s a **full and polished prompt** you can use to create your **portfolio website** using a website generator, AI builder, or with a developer/designer — based 100% on your resume:
+
+---
+
+### ✅ **Full Prompt to Create Portfolio Website for Kaviya M**
+
+> Build a modern, responsive **portfolio website** for **Kaviya M**, a Full Stack Developer and AI/ML Enthusiast. The website should reflect her technical skills, academic achievements, and innovative projects.
+>
+> ### 🎓 About the Developer:
+>
+> * **Name**: Kaviya M
+> * **Email**: [mkaviya1701@gmail.com](mailto:mkaviya1701@gmail.com)
+> * **Phone**: +91 6381780483
+> * **GitHub**: github.com/kavyaaa1701
+> * **LinkedIn**: linkedin.com/in/mkavya10100
+> * **Education**: MCA from College of Engineering, Anna University (2025), BCA Gold Medalist
+> * **Specialization**: React, Flask, PyTorch, MongoDB, Tailwind CSS, AWS, PySpark
+>
+> ### 🌟 Key Sections:
+>
+> 1. **Home**
+>
+>    * Animated headline: “AI/ML Enthusiast | Full Stack Developer | Cloud Data Engineer”
+>    * Subtext with a short intro and CTA buttons: “View Projects” and “Download Resume”
+> 2. **About Me**
+>
+>    * Bio with MCA and BCA academic background
+>    * Mention Gold Medal, leadership roles, and certifications
+>    * Small photo on the side (circle format)
+> 3. **Projects**
+>    Display the following as individual project cards with images, tech stack, and brief descriptions:
+>
+>    * **Ex-Army Helpline Website** (React, Tailwind CSS, Web3 Forms, Vercel)
+>    * **AI-Based Acne Detection & Network Security** (Flask, ResNet50, Attack Trees)
+>    * **MCA Rank List Analysis** (Apache Spark, Docker, Python)
+>    * **Spotify-Inspired Data Engineering** (AWS S3, Glue, Athena, PySpark, QuickSight)
+>    * **USAFE Emergency App** (Java, Android Studio, Maps API)
+>    * **Project Nexus** (Mentorship & project coaching initiative)
+> 4. **Skills**
+>    Show categorized skills with logos or sliders:
+>
+>    * **Languages**: Python, Java, HTML, CSS, JavaScript
+>    * **Frameworks**: React, Flask
+>    * **Cloud & Data**: AWS, PySpark, Docker
+>    * **Tools**: Git, Android Studio, VS Code
+> 5. **Certifications**
+>    List these in card or list format:
+>
+>    * Python for Data Science – NPTEL
+>    * Flask Framework – EduYear
+>    * Certified Full-Stack Developer – Revamp Academy
+>    * Ethical Hacking – Cappriosec Securities
+>    * Data Engineering Basics – EduYear
+> 6. **Achievements**
+>
+>    * BCA Gold Medalist
+>    * Chess Champion (2022), Runner-Up (2023)
+>    * 1st prize in hairdressing & modeling
+>    * Active participant in speech, singing, and photography
+> 7. **Contact**
+>
+>    * Simple contact form with name, email, message
+>    * Links to GitHub, LinkedIn
+>
+> ### 🎨 Design Preferences:
+>
+> * Color palette: **Lavender**, **White**, **Black**, **Orange highlights**
+> * UI Style: Clean, animated, rounded cards, soft shadows
+> * Mobile Responsive
+> * Include smooth scroll, fade-ins, hover effects
+>
+> ### ⚙️ Technical Requirements:
+>
+> * Use **React + Tailwind CSS** for frontend
+> * Organize code in components
+> * Optimize for deployment on **Vercel**
+> * Include `resume.pdf` download option
+
+---
+
+✅ Let me know if you want me to generate the **code** for this now.
